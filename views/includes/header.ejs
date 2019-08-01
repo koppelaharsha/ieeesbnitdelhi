@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>IEEE Student Branch | NIT-Delhi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/ieeesb/images/favicon.ico">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"> </script>
+    <link rel="stylesheet" href="/ieeesb/css/styles.css">        
+</head>
+<body>
+    <div class="ui left sidebar vertical menu">
+        <a class="item <% if(act=='home'){ %> active <% } %>" href="/ieeesb/home"> <i class="home icon"></i> Home </a>
+        <a class="item <% if(act=='events'){ %> active <% } %>" href="/ieeesb/events"> <i class="calendar icon"></i> Events </a>
+        <a class="item <% if(act=='aboutus'){ %> active <% } %>" href="/ieeesb/about_us"> <i class="users icon"></i> About Us </a>
+        <a class="item <% if(act=='contactus'){ %> active <% } %>" href="/ieeesb/contact_us"> <i class="paper plane icon"></i> Contact Us</a>
+        <% if(user){ %>
+            <div class="ui accordion item">
+                <i class="user icon"></i>
+                <a class="title"><i class=" dropdown icon"></i><%= user.name %></a>
+                <div class="content">
+                    <a class="item" href="/ieeesb/u/profile"> View Profile </a>
+                    <a class="item" href="/ieeesb/u/update-profile"> Update Profile </a>
+                    <a class="item" href="/ieeesb/u/update-password"> Update Password </a>
+                    <% if(user.isFaculty){ %>
+                    <a class="item" href="/ieeesb/f/add-blog"> Add Blog </a>
+                    <a class="item" href="/ieeesb/f/my-blogs"> My Blogs </a>
+                    <% } %>
+                    <% if(user.isAdmin){ %>
+                    <a class="item" href="/ieeesb/admin/add-event"> Add Event </a>
+                    <a class="item" href="/ieeesb/events"> Update Event </a>
+                    <% } %>
+                    <a class="item" href="/ieeesb/u/settings"> Settings </a>
+                    <a class="item" href='/ieeesb/logout'> Logout </a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <script>
+        $('.ui.accordion').accordion();
+    </script>
+
+    <div id="main" class="pusher">
+        <div id='header'>
+            <a href='/ieeesb'><img id='ieee-logo' src='/ieeesb/images/ieee-logo.png'></a>
+            <a target='_blank' href='http://nitdelhi.ac.in'><img id='nitd-logo' src='/ieeesb/images/nitd-logo.png'></a>
+        </div>
+        <div class="ui pointing secondary sticky menu" id="navbar-s-l">
+            <a id="menu_item" class="item menu_item"><i class="bars icon"></i></a>
+            <a id="active_tab" class="item"></a>
+        </div>
+        <div class="ui pointing secondary menu" id="navbar-x-l">
+            <a class="item <% if(act=='home'){ %> active <% } %>" href="/ieeesb/home"> <i class="home icon"></i> Home</a>
+            <a class="item <% if(act=='events'){ %> active <% } %>" href="/ieeesb/events"> <i class="calendar icon"></i> Events </a>
+            <a class="item <% if(act=='aboutus'){ %> active <% } %>" href="/ieeesb/about_us"> <i class="users icon"></i> About Us </a>
+            <a class="item <% if(act=='contactus'){ %> active <% } %>" href="/ieeesb/contact_us"> <i class="paper plane icon"></i> Contact Us</a>
+            <% if(user){ %>
+                <a class="right floated item" href="/ieeesb/u/profile"><i class="user icon"></i> <%= user.name %> </a>
+            <% } %>
+        </div>
+        <div id="content" class="content">

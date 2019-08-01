@@ -1,0 +1,19 @@
+
+<div class="ui eight wide tablet four wide computer only column">
+    <div class="ui vertical pointing menu">
+        <a class="disabled item"><i class="user icon"></i><%= user.name %></a>
+        <a class="<%= (uact  == 'view-profile') && 'active' %> item" href="/ieeesb/u/profile">View Profile</a>
+        <a class="<%= (uact == 'update-profile') && 'active' %> item" href="/ieeesb/u/update-profile">Update Profile</a>
+        <a class="<%= (uact == 'update-password') && 'active' %> item" href="/ieeesb/u/update-password">Update Password</a>
+        <% if(user.isFaculty){ %>
+        <a class="<%= (uact == 'add-blog') && 'active' %> item" href="/ieeesb/f/add-blog">Add Blog</a>
+        <a class="item" href="/ieeesb/f/my-blogs">My Blogs</a>
+        <% } %>
+        <% if(user.isAdmin){ %>
+        <a class="<%= (uact == 'add-event') && 'active' %> item" href="/ieeesb/admin/add-event">Add Event</a>
+        <a class="<%= (uact == 'update-event') && 'active' %> item" href="/ieeesb/events">Update Event</a>
+        <% } %>
+        <a class="<%= (uact == 'settings') && 'active' %> item" href="/ieeesb/u/settings">Settings</a>
+        <a class="item" href='/ieeesb/logout'>Logout</a>
+    </div>
+</div>

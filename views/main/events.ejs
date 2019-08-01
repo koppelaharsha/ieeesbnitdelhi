@@ -1,0 +1,34 @@
+<%- include('../includes/header') %>
+
+	
+	<div class='esclass ui segment' style="border-left: 4px solid green">
+	<h2> Ongoing Events </h2>
+	<% if(oge.length == 0){ %>
+		<p> No Ongoing Events </p>
+	<% }else{ %>
+		<div class="ui three doubling stackable cards">
+		<% for(e of oge){ %>
+		<%- include('../includes/event') %>
+		<% } %>
+		</div>
+	<% } %>
+	</div>
+	
+	<div class='esclass ui segment' style="border-left: 4px solid orange">
+	<h2> Upoming Events </h2>
+	<% if(uce.length == 0){ %>
+		<p> No Upcoming Events </p>
+	<% }else{ %>
+		<div class="ui three doubling stackable cards">
+		<% for(e of uce){ %>
+		<%- include('../includes/event') %>
+		<% } %>
+		</div>
+	<% } %>
+	</div>
+	
+	<div class="ui center aligned container">
+		<a href="/ieeesb/events/past/">view past events</a>
+	</div>
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,27 @@
+<%- include('../includes/header.ejs') %>
+
+<div>
+	<div class="ui two doubling cards">
+	<% for(i in data){ %>
+		<div class="card">
+		<div class="ui middle aligned content">
+			<div class="ui middle aligned divided grid">
+				<div class="middle aligned row">
+				<div class="ui center aligned six wide column">
+					<img class="ui small middle aligned image" src="/ieeesb/images/members/<%= data[i].image %>" alt="">
+				</div>
+				<div class="middle aligned ten wide column">
+					<strong><%= data[i].name %></strong><br>
+					<%= data[i].position %><br>
+					<i class="phone icon"></i> <%= data[i].phone %> <br>
+					<i class="mail icon"></i> <%= data[i].email %>
+				</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<% } %>
+	</div>
+</div>
+
+<%- include('../includes/footer.ejs') %>

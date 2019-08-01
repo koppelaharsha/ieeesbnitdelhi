@@ -1,0 +1,57 @@
+<%- include('../includes/header.ejs') %>
+
+<div class="ui basic segment">
+	<!-- <h2> Blogs </h2> -->
+	<% if(blogs.length == 0){ %>
+	<div class="ui center aligned basic segment"> No Blogs Found </div>
+    <% }else{ %>
+		<div class="ui three doubling stackable cards">
+			<% for(b of blogs){ %>
+				<div class="card">
+					<div class="ui content">
+						<div class="ui basic clearing segment">
+						<img class="ui left floated avatar big image" src="/ieeesb/images/users/<%= b.user.username %>.jpg" alt="">
+						<div class="ui left floated item">
+							<div class="header"><%= b.user.name %></div>
+							<div class="meta">
+								<%=  b.updatedAt.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
+								<!-- <%  if(b.createdAt.toString() !== b.updatedAt.toString()){ %>
+									Last edit: <%=  b.updatedAt.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
+								<% }else{ %>
+									<%=  b.createdAt.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
+								<% } %> -->
+							</div>
+						</div>
+						</div>
+						<div class="ui fitted divider"></div>
+						<div class="ui header"><%= b.title %></div>
+						<div class="description">
+							<%- b.content %>
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	<% } %>
+</div>
+
+<div class="ui center aligned container">
+    <div class="ui pagination menu">
+        <a class="disabled item"><i class="chevron left icon"></i></a>
+        <% if(page!=1 && last>0){ %> <a class="item" href="/ieeesb/blogs/1">1</a> <% } %> 
+        <% if(page <= last && page>2){ %> 
+            <% if(page-1>2){ %> <a class="disabled item">...</a> <% } %>
+            <a class="item" href="/ieeesb/blogs/<%= page-1 %>"><%= page-1 %></a>
+        <% } %>
+        <% if(page <= last){ %> <a class='active item' href="/ieeesb/blogs/<%= page %>"><%= page %></a> <% } %>
+        <% if(page < last && page!=last-1){ %> 
+            <a class="item" href="/ieeesb/blogs/<%= page+1 %>"><%= page+1 %></a>
+            <% if(page+1!=last-1){ %> <a class="disabled item">...</a> <% } %>
+        <% } %>
+        <% if(page > last && last>0){ %><a class="disabled item">...</a><% } %>
+        <% if(page!=last && last!=1 && last>0){ %> <a class="item" href="/ieeesb/blogs/<%= last %>"><%= last %></a> <% } %>
+        <a class="disabled item"><i class="chevron right icon"></i></a>
+    </div>
+</div>
+
+<%- include('../includes/footer.ejs') %>

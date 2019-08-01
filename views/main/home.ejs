@@ -1,0 +1,60 @@
+<%- include('../includes/header') %>
+<link rel="stylesheet" href="/ieeesb/css/glide.core.min.css">
+<script src="/ieeesb/js/glide.min.js"></script>
+
+<div class="ui sixteen wide column">
+	<div class="glide">
+		<div class="glide__track slides-div" data-glide-el="track">
+			<ul class="glide__slides">
+				<li class="glide__slide"><img class="ui fluid image" src="/ieeesb/images/nit-delhi.png"></li>
+				<li class="glide__slide"><img class="ui fluid image" src="/ieeesb/images/nit-delhi.png"></li>
+				<li class="glide__slide"><img class="ui fluid image" src="/ieeesb/images/nit-delhi.png"></li>
+				<li class="glide__slide"><img class="ui fluid image" src="/ieeesb/images/nit-delhi.png"></li>
+				<li class="glide__slide"><img class="ui fluid image" src="/ieeesb/images/nit-delhi.png"></li>
+			</ul>
+		</div>
+		<div class="glide__arrows" data-glide-el="controls">
+			<button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="ui chevron left large icon"></i></button>
+			<button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="ui chevron right large icon"></i></button>
+		</div>
+	</div>
+</div>
+<h2 class="ui centered header">Welcome to IEEE Student Branch NIT-DELHI</h2>
+<hr>
+<div class="home-content">
+	<p>&emsp; &emsp;IEEE Student Branch of NIT Delhi seeks to enhance the learning experience of the student community
+		on the NIT Delhi campus. The Student Branch focuses on conducting social and technical activities for students,
+		and also encourages the students to take full advantage of the benefits of IEEE membership, including
+		scholarships, competitions, and conference grants. The Student Branch also intends to provide opportunities for
+		students to network with peers in other institutes, academicians, professionals, engineers, and scientists
+		through the on campus IEEE Student Branch and the Local IEEE Section, thereby encouraging students to be a part
+		of the global IEEE community.</p>
+	<p>&emsp; &emsp;In the year 2018, the IEEE Student Branch of NIT Delhi joined IEEE University Partnership Program
+		(UPP), an elite group of many top engineering schools and universities worldwide. The partnership allows the
+		Student Branch to avail additional resources and support, including help in networking with local, regional, and
+		international IEEE groups.</p>
+</div>
+
+<script>
+	$(document).ready(function(){
+		setTimeout(function(){
+			new Glide('.glide', {
+				type: 'carousel',
+				startAt: 0,
+				perView: 1,
+				focusAt: 'center',
+				autoplay: 5000,
+				hoverpause: true,
+				keyboard: true,
+				swipeThreshold: 5,
+				dragThreshold: 10,
+				touchAngle: 45,
+			}).mount();
+		},1000);
+		setTimeout(function(){
+			$(window).trigger('resize');
+		},1000);
+	});
+</script>
+
+<%- include('../includes/footer') %>

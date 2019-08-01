@@ -1,0 +1,62 @@
+<%- include('../includes/header') %>
+<link rel="stylesheet" href="/ieeesb/css/calendar.min.css">
+<script src="/ieeesb/js/calendar.min.js"></script>
+
+<div class="ui container basic segment stackable grid">
+    <%- include('../includes/user_menu') %>
+    <div class="ui sixteen wide tablet twelve wide computer column">
+        <h3> Add Event </h3>
+        <div class="ui form">
+            <form action="/ieeesb/admin/add-event" method="post">
+                <div class="field">
+                    <label for="title">Title:</label>
+                    <div class="ui input">
+                        <input type="text" name="title" required><br>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="long_description">Description:</label>
+                    <div class="ui input">
+                        <textarea name="description" rows="10" required></textarea><br>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label for="start_date">Start Date/Time:</label>
+                        <div class="ui calendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="text" name="start_date" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="end_date">End Date/Time:</label>
+                        <div class="ui calendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="text" name="end_date" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="venue">Venue:</label>
+                    <div class="ui left icon input">
+                        <i class="map marker alternate icon"></i>
+                        <input type="text" name="venue" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <button class="ui blue submit fluid button" type="submit">Add Event</button>
+                </div>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form>
+            <script>
+                $('.ui.calendar').calendar();
+            </script>
+        </div>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,93 @@
+<%- include('../includes/header') %>
+
+<link rel="stylesheet" href="/ieeesb/css/calendar.min.css">
+<script src="/ieeesb/js/calendar.min.js"></script>
+
+<div class="ui container basic segment stackable grid">
+    <%- include('../includes/user_menu') %>
+    <div class="ui sixteen wide tablet twelve wide computer column">
+        <h3> Update Event </h3>
+        <div class="ui form">
+            <form action="/ieeesb/admin/update-event/<%= event.id+1000 %>" method="post">
+                <div class="field">
+                    <label for="title">Title:</label>
+                    <div class="ui input">
+                        <input type="text" name="title" value="<%= event.title %>" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="long_description">Description:</label>
+                    <div class="ui input">
+                        <textarea type="text" name="description" rows="10" required><%= event.description.replace(/<br>/g,'\r\n') %></textarea>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label for="start_date">Start Date/Time:</label>
+                        <div class="ui calendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="text" name="start_date" value="<%= event.startDate %>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="end_date">End Date/Time:</label>
+                        <div class="ui calendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="text" name="end_date" value="<%= event.endDate %>" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="venue">Venue:</label>
+                    <div class="ui left icon input">
+                        <i class="map marker alternate icon"></i>
+                        <input type="text" name="venue" value="<%= event.venue %>" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <button class="ui blue submit fluid button" type="submit">Update Event</button>
+                </div>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form>
+            <script>
+                    $('.ui.calendar').calendar();
+            </script>
+            <form action="/ieeesb/admin/delete-event/<%= event.id+1000 %>" method="POST">
+                <input type="hidden" name="verified" value="0">
+                <input type="hidden" name="eid" value="<%= event.id+1000 %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="button" class="ui fluid button" onclick="confirmEventDelete()" value="Delete Event">
+            </form>
+            <script>
+                function confirmEventDelete() {
+                    $('.ui.tiny.modal').modal({
+                        onApprove: () => { 
+                            document.forms[1].verified.value = 1;
+                            document.forms[1].submit();
+                         }
+                    }).modal('show');
+                }
+            </script>
+        </div>
+    </div>
+</div>
+
+<div class="ui tiny modal">
+    <div class="header">
+        Confirm Delete Event
+    </div>
+    <div class="content">
+        Are you sure you want to delete this event? <br>
+        There is no way you can retrieve it back.
+    </div>
+    <div class="actions">
+        <div class="ui cancel button">Cancel</div>
+        <div class="ui ok button">OK</div>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>

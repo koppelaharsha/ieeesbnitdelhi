@@ -1,0 +1,33 @@
+{
+  "name": "ieeesb",
+  "version": "1.0.0",
+  "description": "IEEE Student Branch NIT-Delhi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Harsha Vardhan Reddy",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "csurf": "^1.9.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
+    "express-mysql-session": "^2.1.0",
+    "express-session": "^1.15.6",
+    "firebase": "^6.2.4",
+    "helmet": "^3.19.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
+    "nodemailer": "^5.1.1",
+    "sequelize": "^6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

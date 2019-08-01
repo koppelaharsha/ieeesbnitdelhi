@@ -1,0 +1,33 @@
+<%- include('../includes/header.ejs') %>
+
+<div class="ui container basic segment stackable grid">
+    <%- include('../includes/user_menu') %>
+    <div class="ui sixteen wide mobile tablet twelve wide computer column">
+        <div class="ui basic segment">
+            <% if(msg){ %> <%= msg %> <% } %>
+            <h3>Profile Details:</h3>
+            <div class="ui form">
+                <div class="field">
+                    <label>Name:</label>
+                    <div class="ui input">
+                        <input value="<%= user.name %>" readonly><br>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Username:</label>
+                    <div class="ui input">
+                        <input value="<%= user.username %>" readonly><br>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Email:</label>
+                    <div class="ui input">
+                        <input value="<%= user.email %>" readonly><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>

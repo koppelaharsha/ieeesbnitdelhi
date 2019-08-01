@@ -1,0 +1,35 @@
+<%- include('../includes/header') %>
+
+    <div class='esclass ui segment' style="border-left: 4px solid #0033cc">
+	    <h2> Past Events </h2>
+	    <% if(pe.length == 0){ %>
+		    <p> No Events Found </p>
+        <% }else{ %>
+            <div class="ui three doubling stackable cards">
+            <% for(e of pe){ %>
+            <%- include('../includes/event') %>
+            <% } %>
+            </div>
+	    <% } %>
+	</div>
+
+    <div class="ui center aligned container">
+    <div class="ui pagination menu">
+        <a class="disabled item"><i class="chevron left icon"></i></a>
+        <% if(page!=1 && last>0){ %> <a class="item" href="/ieeesb/events/past/1">1</a> <% } %> 
+        <% if(page <= last && page>2){ %> 
+            <% if(page-1>2){ %> <a class="disabled item">...</a> <% } %>
+            <a class="item" href="/ieeesb/events/past/<%= page-1 %>"><%= page-1 %></a>
+        <% } %>
+        <% if(page <= last){ %> <a class='active item' href="/ieeesb/events/past/<%= page %>"><%= page %></a> <% } %>
+        <% if(page < last && page!=last-1){ %> 
+            <a class="item" href="/ieeesb/events/past/<%= page+1 %>"><%= page+1 %></a>
+            <% if(page+1!=last-1){ %> <a class="disabled item">...</a> <% } %>
+        <% } %>
+        <% if(page > last && last>0){ %><a class="disabled item">...</a><% } %>
+        <% if(page!=last && last!=1 && last>0){ %> <a class="item" href="/ieeesb/events/past/<%= last %>"><%= last %></a> <% } %>
+        <a class="disabled item"><i class="chevron right icon"></i></a>
+    </div>
+    </div>
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,39 @@
+<%- include('../includes/header') %>
+
+<div class="ui container basic segment stackable grid">
+    <%- include('../includes/user_menu') %>
+    <div class="ui sixteen wide tablet twelve wide computer column">
+        <div class="ui basic segment">
+            <% if(msg){ %> <%= msg %> <% } %>
+            <h3> Update Profile </h3>
+            <div class="ui form">
+                <form action="/ieeesb/u/update-profile" method="post">
+                    <div class="field">
+                        <label for="name">Name:</label>
+                        <div class="ui input">
+                            <input type="text" name="name" value="<%= user.name %>" required><br>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="username">Username:</label>
+                        <div class="ui input">
+                            <input type="text" name="username" value="<%= user.username %>" required><br>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <div class="ui input">
+                            <input type="email" name="email" value="<%= user.email %>" required><br>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <button class="ui blue submit fluid button" type="submit">UPDATE</button>
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,18 @@
+
+    <div class='eclass ui fluid card'>
+        <h3 class='ui top attached grey inverted segment header'> <%=  e.title  %></h3>
+        <div class="ui image">
+                <img src="/ieeesb/gallery/events/<%= e.id+1000 %>.jpg" alt="">
+            </div>
+        <div class="ui content">
+            <b>Timings:</b>
+                <span><% if(e.startDate == e.endDate){ %><%= e.startDate.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %><% }else{ 
+                    if(e.startDate.getDate() == e.endDate.getDate() && e.startDate.getMonth()==e.endDate.getMonth() && e.startDate.getFullYear()==e.endDate.getFullYear()){ %>
+                        <%= e.startDate.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %><strong> to </strong><%= e.endDate.toLocaleTimeString('en-US',{hour:"2-digit",minute:"2-digit"}) %> 
+                    <% }else{ %><%= e.startDate.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %><strong> to </strong><%= e.endDate.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
+                <% }} %></span>
+            <br><strong>Venue:</strong>&nbsp;&nbsp;&nbsp;<span><%=  e.venue  %></span>
+            <br><span><a href='/ieeesb/event/<%= e.id+1000 %>/<%= e.linktext %>'>View more</a></span>
+            <% if(user && user.isAdmin){ %><br><span><a href="/ieeesb/admin/update-event/<%= e.id+1000 %>">edit event</a></span><% } %>
+        </div>
+    </div>

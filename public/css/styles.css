@@ -1,0 +1,165 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
+
+*{
+	margin:0;
+	border:0;
+	padding:0;
+	/* font-family: sans-serif; */
+}
+
+html,body {
+	font-size: 100%;
+}
+
+#header{
+	/* height:100px; */
+	padding:15px 10%;
+	background-color:#fff;
+    overflow:auto;
+    border-bottom: 2px solid rgba(34,36,38,.15);
+}
+
+#ieee-logo{
+	height:100px;
+	float:left;
+}
+
+#nitd-logo{
+    height:100px;
+    float: right;
+}
+
+#footer{
+    background-color:#515151;
+	color:white;
+	text-align:center;
+	padding:30px 10%;
+}
+
+#footer ul{
+	list-style-type:none;
+	display:inline-block;
+	text-align:center;
+}
+
+#footer ul li{
+    float:left;
+	padding:0px 5px;
+}
+
+#footer ul img{
+	height:25px;
+}
+
+/* ============================================================================================== */
+
+#content {
+	padding: 10px 2px;
+	/* padding:0; */
+}
+
+#navbar-x-l{
+    margin:0;
+    padding:0 10%;
+    position: sticky;
+	top: 0;
+    z-index: 2;
+	background-color: white;
+	display: none;
+}
+
+#navbar-s-l{
+    margin: 0;
+	padding: 0;
+	/* position: sticky;
+	top: 0;
+	z-index: 2; */
+	background-color: white;
+	display: flex;
+}
+
+.ui.container{
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.address h3, .address h4{
+	margin: 0;
+	padding: 0;
+}
+
+div.ui.basic.segment{
+	padding: 0;
+}
+
+div.ui.basic.clearing.segment{
+	margin:0;
+}
+
+div.ui.header{
+	margin:0;
+}
+
+.glide__arrows {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.glide__arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	cursor: pointer;
+}
+
+.glide__arrow--left {
+	left: 10px;
+}
+
+.glide__arrow--right {
+	right: 10px;
+}
+
+a.title.item{
+	padding: 0;
+}
+
+div.column {
+	padding:5px;
+}
+
+p{
+	text-align: justify;
+	overflow: auto;
+}
+
+p img {
+	width: 100%;
+}
+
+.ui.vertical.pointing.menu {
+	width: unset;
+}
+
+@media only screen and (min-width: 830px) {
+
+	#content {
+		padding: 10px 10%;
+	}
+
+	#navbar-s-l {
+		display: none;
+	}
+
+	#navbar-x-l {
+		display: flex;
+	}
+
+	p img {
+		width:60%;
+	}
+
+}

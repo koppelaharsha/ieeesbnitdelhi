@@ -1,0 +1,17 @@
+<%- include('../includes/header.ejs') %>
+
+    <table class="ui celled stripped table">
+        <thead>
+            <tr><th colspan="2">Payment Details</th></tr>
+        </thead>
+        <tbody>
+            <% for(i in info){ %>
+                <tr>
+                    <td><%= i %></td>
+                    <td><%= info[i] %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    
+<%- include('../includes/footer.ejs') %>

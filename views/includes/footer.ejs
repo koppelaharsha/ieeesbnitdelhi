@@ -1,0 +1,51 @@
+
+    </div>
+    <div id='footer'>
+        Copyright &copy; 2018 <br> IEEE Student Branch | NIT Delhi <br><br>
+        <ul>
+            <li>Follow Us on</li><br>
+            <li><a target='_blank' href='https://www.facebook.com/nitdieee'>
+                <img src='/ieeesb/images/facebook-logo.png' alt='Facebook'>
+            </a></li>
+            <li><a target='_blank' href='https://www.instagram.com/nitdieee'>
+                <img src='/ieeesb/images/instagram-logo.png' alt='Instagram'>
+            </a></li>
+        </ul>
+    </div>
+</div>
+</body>
+
+<script>
+
+    function resizefn() {
+        if ($(window).width() < 830) {
+            $('#nitd-logo').attr('src', '/ieeesb/images/nitd-logo.png');
+            $('body').addClass('ui pushable');
+        }
+        if ($(window).width() > 830) {
+            $('#nitd-logo').attr('src', '/ieeesb/images/nitdelhi-logo.png');
+            $('body').removeClass('ui pushable');
+        }
+        $('#main').css('visibility','');
+    }
+
+    $(document).ready(function () {
+        resizefn();
+        $(window).resize(function () {
+            resizefn();
+        });
+    });
+
+    $('#active_tab').append($('.active.item').first().text());
+    // $('#navbar-s-l').sticky({});
+
+    $('.ui.left.sidebar').first().sidebar({
+        // context: $('#main'),
+        // scrollLock: true,
+        transition: 'overlay',
+        mobileTransition: 'overlay'
+    }).sidebar('attach events', '#menu_item');
+                    
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<%- include('../includes/header') %>
+
+<div class="ui centered stackable grid">
+	<div class="sixteen wide mobile eight wide tablet eight wide computer column">
+		<div class="ui form segment">
+			<h3 class="center aligned header">Login</h3>
+			<% if(msg){ %>
+			<div class="ui error message segment">
+				<%= msg %>
+			</div>
+			<% } %>
+			<form action="/ieeesb/login" method="post">
+				<div class="field">
+					<label for="username">Email/Username</label>
+					<div class="ui left icon input">
+						<i class="user icon"></i>
+						<input type="text" name="email" placeholder="Email/Username" required>
+					</div>
+				</div>
+				<div class="field">
+					<label for="password">Password</label>
+					<div class="ui left icon input">
+						<i class="lock icon"></i>
+						<input type="password" name="password" placeholder="********" required>
+					</div>
+				</div>
+				<div class="field">
+					<button class="ui blue submit fluid button" type="submit">LOGIN</button>
+				</div>
+				<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+			</form>
+			<a href="/ieeesb/signup" class="ui submit fluid button">Sign up</a>
+		</div>
+	</div>
+</div>
+
+<%- include('../includes/footer') %>
