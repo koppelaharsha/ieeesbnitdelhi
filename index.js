@@ -35,7 +35,7 @@ app.set('views','views');
 
 const authRoutes=require('./routes/auth');
 const userRoutes=require('./routes/user');
-const facultyRoutes=require('./routes/faculty');
+// const facultyRoutes=require('./routes/faculty');
 const adminRoutes=require('./routes/admin');
 const mainRoutes=require('./routes/main');
 const donateRoutes=require('./routes/donate');
@@ -43,16 +43,16 @@ const donateRoutes=require('./routes/donate');
 app.get('/hello',(req,res)=>{res.send('Hello')});
 app.use(authRoutes);
 app.use('/u',userRoutes);
-app.use('/f',facultyRoutes);
+// app.use('/f',facultyRoutes);
 app.use('/admin',adminRoutes);
 app.use(donateRoutes);
 app.use(mainRoutes);
 
-const User=require('./models/Users');
-const Blog=require('./models/Blogs');
+// const User=require('./models/Users');
+// const Blog=require('./models/Blogs');
 
-User.hasMany(Blog);
-Blog.belongsTo(User);
+// User.hasMany(Blog);
+// Blog.belongsTo(User);
 
 sequelize.sync().then( result => {
         app.listen(1234,'localhost');

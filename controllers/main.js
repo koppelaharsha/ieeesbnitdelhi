@@ -130,34 +130,34 @@ module.exports.event = (req,res,next) => {
     })
 }
 
-module.exports.allblogs = (req,res,next) => {
-    let page = parseInt(req.params.page);
-    if(page === NaN || !page || page<=0){ 
-        return next(); 
-    }
-    let blogs = [];
-    let bc = 6;
-    //let last=0;
-    Blogs.findAndCountAll({ 
-        include: [{model:Users,attributes:['username','name']}], 
-        order: [['updatedAt','DESC']], 
-        offset: (page-1)*bc, 
-        limit: bc 
-    }).then(results => {
-        blogs = results.rows;
-        last = Math.ceil(results.count/bc);
-        return res.render('main/blogs',{
-            act: "blogs",
-            user: req.session.user,
-            blogs: blogs,
-            last: last,
-            page: page
-        })
-    }).catch(error=>{
-        console.log(error);
-        return next();
-    });
-}
+// module.exports.allblogs = (req,res,next) => {
+//     let page = parseInt(req.params.page);
+//     if(page === NaN || !page || page<=0){ 
+//         return next(); 
+//     }
+//     let blogs = [];
+//     let bc = 6;
+//     //let last=0;
+//     Blogs.findAndCountAll({ 
+//         include: [{model:Users,attributes:['username','name']}], 
+//         order: [['updatedAt','DESC']], 
+//         offset: (page-1)*bc, 
+//         limit: bc 
+//     }).then(results => {
+//         blogs = results.rows;
+//         last = Math.ceil(results.count/bc);
+//         return res.render('main/blogs',{
+//             act: "blogs",
+//             user: req.session.user,
+//             blogs: blogs,
+//             last: last,
+//             page: page
+//         })
+//     }).catch(error=>{
+//         console.log(error);
+//         return next();
+//     });
+// }
 
 module.exports.aboutus = (req,res,next) => {
     let data = require('../data/members');

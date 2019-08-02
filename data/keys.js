@@ -10,24 +10,24 @@ module.exports = {
         refreshToken: '1/vpwl9HlUVz5_u_uQh4OfiEGBVjJwTGnOYEp16eO73uM'
     },
     myMailId1: 'ieeenitdelhi@gmail.com',
-    mysqlCredentials: {
+    mysqlCredentials1: {
         hostname: 'localhost',
         username: 'harshae',
         password: '',
         database: 'ieee'
     },
-    mysqlCredentials1: {
+    mysqlCredentials: {
         hostname: 'database-1.cluster-c1rnssuevuql.ap-south-1.rds.amazonaws.com',
         username: 'admin',
         password: 'kWWNhcA2VMVCBijelZxN',
         database: 'ieeesbnitdelhi'
     },
-    paytmCredentials: {
+    paytmCredentials1: {
         mid:'luNLVC24126019166374',
         key:'xNVfvY9CE&qUux8&',
         website: 'WEBSTAGING'
     },
-    paytmCredentials1: {
+    paytmCredentials: {
         mid:'HqqTcI24619177045921',
         key:'yVhrnfAuirhONh67',
         website: 'DEFAULT'

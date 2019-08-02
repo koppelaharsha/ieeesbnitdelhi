@@ -9,8 +9,8 @@ router.get('/events/past',(req,res,next)=>{return res.redirect('/ieeesb/events/p
 router.get('/events/past/:page',controller.pastevents);
 router.get('/event/:eid',controller.event);
 router.get('/event/:eid/(:elink)?',controller.event);
-router.get('/blogs',(req,res,next)=>{return res.redirect('/ieeesb/blogs/1')});
-router.get('/blogs/:page',controller.allblogs);
+// router.get('/blogs',(req,res,next)=>{return res.redirect('/ieeesb/blogs/1')});
+// router.get('/blogs/:page',controller.allblogs);
 router.get('/about_us',controller.aboutus);
 router.get('/contact_us',controller.getContactUs);
 router.post('/contact_us',controller.postContactUs);
