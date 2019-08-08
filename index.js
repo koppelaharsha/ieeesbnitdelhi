@@ -55,7 +55,7 @@ app.use(mainRoutes);
 // Blog.belongsTo(User);
 
 sequelize.sync().then( result => {
-        app.listen(1234,'localhost');
+        app.listen(1333,'localhost');
     }).catch( err => {
         console.log(err);
     });
