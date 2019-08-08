@@ -17,6 +17,7 @@
         <a class="item <% if(act=='events'){ %> active <% } %>" href="/ieeesb/events"> <i class="calendar icon"></i> Events </a>
         <a class="item <% if(act=='aboutus'){ %> active <% } %>" href="/ieeesb/about_us"> <i class="users icon"></i> About Us </a>
         <a class="item <% if(act=='contactus'){ %> active <% } %>" href="/ieeesb/contact_us"> <i class="paper plane icon"></i> Contact Us</a>
+        <a class="item" href="https://www.ieee.org/membership/join/index.html" target="_blank"> <i class="user plus icon"></i> Join IEEE </a>
         <% if(user){ %>
             <div class="ui accordion item">
                 <i class="user icon"></i>
@@ -57,6 +58,7 @@
             <a class="item <% if(act=='events'){ %> active <% } %>" href="/ieeesb/events"> <i class="calendar icon"></i> Events </a>
             <a class="item <% if(act=='aboutus'){ %> active <% } %>" href="/ieeesb/about_us"> <i class="users icon"></i> About Us </a>
             <a class="item <% if(act=='contactus'){ %> active <% } %>" href="/ieeesb/contact_us"> <i class="paper plane icon"></i> Contact Us</a>
+            <a class="item" href="https://www.ieee.org/membership/join/index.html" target="_blank"> <i class="user plus icon"></i> Join IEEE </a>
             <% if(user){ %>
                 <a class="right floated item" href="/ieeesb/u/profile"><i class="user icon"></i> <%= user.name %> </a>
             <% } %>
