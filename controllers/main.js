@@ -6,7 +6,7 @@ const sop = Sequelize.Op;
 const mailer = require('../util/mailer');
 const fs = require('fs');
 const path = require('path');
-const {eventIdInc, myMailId} = require('../data/keys');
+const {eventIdInc, mailCredentials} = require('../data/keys');
 
 module.exports.profile = (req,res,next) => {
     Users.findOne({
@@ -184,16 +184,15 @@ module.exports.postContactUs = (req,res,next) => {
     let feedback = req.body.feedback.toString().trim();
     req.flash('msg','Thank you for contacting us!');
     res.redirect('/ieeesb/contact_us');
+    const myMailId = mailCredentials.mailId;
     return mailer.sendMail({
+        auth: {
+            user: myMailId,
+        },
         from: myMailId,
         to: myMailId,
-        cc: 'khvr765@gmail.com',
-        auth: {
-            user: myMailId
-        },
         subject: 'IEEE-NITD Feedback/Suggestion',
-        html: 'From: <strong>'+name+'('+email+')</strong>'+'\
-            <p>'+feedback+'</p>'
+        html: '<p><strong>From: </strong>'+name+' ('+email+')<br><strong>Content: </strong>'+feedback+'</p>'
     },(error,info) => {
         if(error){
             console.log(error);

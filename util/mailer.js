@@ -9,7 +9,7 @@ let mailer = nodemailer.createTransport({
     auth: {
         type: 'OAuth2',
         clientId: mailCredentials.clientId,
-        clientSecret: mailCredentials.clientId,
+        clientSecret: mailCredentials.clientSecret,
         refreshToken: mailCredentials.refreshToken
     }
 });
