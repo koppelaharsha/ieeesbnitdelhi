@@ -27,7 +27,7 @@ module.exports = [
     },{
         "name":"Jaspreet Singh",
         "position":"Joint Secretary",
-        "phone":"9971362432",
+        "phone":"+919971362432",
         "email":"161210023@nitdelhi.ac.in",
         "image":""
     },{
