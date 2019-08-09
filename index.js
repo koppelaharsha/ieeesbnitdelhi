@@ -17,7 +17,10 @@ const app=express();
 //     console.log(req.get('X-Forwarded-For')+' '+req.method+' '+req.url); 
 //     next();
 // });
-app.use(morgan('combined',{stream: fs.createWriteStream(path.join(__dirname, 'data', 'access.log'), { flags: 'a' })}));
+app.use(morgan(
+    ':req[x-forwarded-for] - [:date[web]] ":method :url HTTP/:http-version" :status :res[content-length] ":req[x-requested-with]" ":referrer" ":user-agent"',
+    {stream: fs.createWriteStream(path.join(__dirname, 'data', 'access.log'), { flags: 'a' })}
+));
 // app.use(cors());
 app.use(helmet());
 app.use(favicon('./public/images/favicon.ico'));
