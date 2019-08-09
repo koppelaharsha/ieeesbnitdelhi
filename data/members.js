@@ -7,12 +7,6 @@ module.exports = [
         "email":"rikmantrabasu@nitdelhi.ac.in",
         "image":"rkbasu.jpg"
     },{
-        "name":"Dr. Vinay Kumar Jadoun",
-        "position":"Branch Coordinator",
-        "phone":"",
-        "email":"vjadoun@nitdelhi.ac.in",
-        "image":"drvinay.png"
-    },{
         "name":"Anuveksh Taneja",
         "position":"Chairperson",
         "phone":"+919876543210",
