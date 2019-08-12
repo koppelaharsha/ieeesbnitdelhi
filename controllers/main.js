@@ -192,7 +192,9 @@ module.exports.postContactUs = (req,res,next) => {
         from: myMailId,
         to: myMailId,
         subject: 'IEEE-NITD Feedback/Suggestion',
-        html: '<p><strong>From: </strong>'+name+' ('+email+')<br><strong>Content: </strong>'+feedback+'</p>'
+        html: '<div style="font-family:Roboto,sans-serif;font-size:14px">\
+        <div><strong>From: </strong>'+name+' ('+email+')</div>\
+        <div><strong>Content: </strong>'+feedback+'</div>'
     },(error,info) => {
         if(error){
             console.log(error);
