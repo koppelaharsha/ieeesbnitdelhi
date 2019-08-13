@@ -10,9 +10,9 @@ module.exports = {
         refreshToken: '1/U4ptm1njYC5JaYggGle8qiZB-o4OQ4au7iwMLN1P0ko'
     },
     mysqlCredentials: {
-        hostname: 'database-1.cluster-c1rnssuevuql.ap-south-1.rds.amazonaws.com',
+        hostname: 'db-instance-1.c1rnssuevuql.ap-south-1.rds.amazonaws.com',
         username: 'admin',
-        password: 'kWWNhcA2VMVCBijelZxN',
+        password: 'khvradmin',
         database: 'ieeesbnitdelhi'
     },
     paytmCredentials: {
