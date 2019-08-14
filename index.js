@@ -7,10 +7,15 @@ const csrf = require('csurf');
 const flash = require('connect-flash');
 const helmet = require('helmet');
 const logger = require('./util/logger');
+const dotenv = require('dotenv');
+const compressor = require('compression');
+
+dotenv.config();
 // const cors = require('cors');
 
 const app=express();
 
+app.use(compressor());
 app.use(logger);
 // app.use(cors());
 app.use(helmet());
@@ -35,7 +40,7 @@ app.use(routeHandler);
 // Blog.belongsTo(User);
 
 sequelize.sync().then( result => {
-        app.listen(1333,'localhost');
+        app.listen(process.env.PORT,'localhost');
     }).catch( err => {
         console.log(err);
     });
