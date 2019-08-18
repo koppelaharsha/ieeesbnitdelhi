@@ -16,6 +16,7 @@ const app=express();
 app.use(compressor());
 // app.use(cors());
 app.use(helmet());
+app.use(express.static('public')),
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 // app.use(cookieParser());
@@ -28,7 +29,6 @@ app.set('views','web/views');
 app.use('/',
     require('./web/util/logger'),
     favicon('web/public/images/favicon.ico'),
-    express.static('web/public'),
     require('./web/routes/router')
 );
 
