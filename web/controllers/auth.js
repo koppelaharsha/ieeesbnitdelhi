@@ -2,11 +2,11 @@ const Sequelize = require('sequelize');
 const sop = Sequelize.Op;
 const Users = require('../models/Users');
 const bcrypt = require('bcryptjs');
-const mailer = require('../util/mailer');
-const {myMailId} = require('../data/keys');
+const mailer = require('../../util/mailer');
+const { mailCredentials } = require('../data/keys');
 
 module.exports.getSignup = (req, res, next) => {
-    //return next();
+    return next();
     if (!req.session.user){
         msg = console.log(req.flash('msg')[0]);
         return res.render('auth/signup', {
@@ -21,7 +21,7 @@ module.exports.getSignup = (req, res, next) => {
 }
 
 module.exports.postSignup = (req, res, next) => {
-    //return next();
+    return next();
     const username = req.body.username;
     const name = req.body.name;
     const email = req.body.email;
@@ -53,8 +53,11 @@ module.exports.postSignup = (req, res, next) => {
                     req.flash('msg', 'Signup successful. Please login with your credentials')
                     res.redirect('/ieeesb/login');
                     return mailer.sendMail({
-                        from: myMailId,
-                        to: email,
+                        auth: {
+                            user: mailCredentials.mailId,
+                        },
+                        from: 'IEEESB NIT-Delhi <' + mailCredentials.mailId + '>',
+                        to: results.email,
                         subject: 'IEEE-NITD Account Activation',
                         html: '<h3>Thank you for Signing Up.</h3>'
                     });
@@ -83,6 +86,7 @@ module.exports.getLogin = (req, res, next) => {
 module.exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+    if(email != 'admin') return res.redirect('/ieeesb/login');
     Users.findOne({
         where: {[sop.or]: [{email: email}, {username: email}]}
     }).then(user => {

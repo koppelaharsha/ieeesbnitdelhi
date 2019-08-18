@@ -1,7 +1,7 @@
 const Events = require('../models/Events');
 const fs = require('fs');
 const path = require('path');
-const {eventIdInc} = require('../data/keys');
+const { eventIdInc } = require('../data/keys');
 
 module.exports.getAddEvent = (req,res,next) => {
     return res.render('admin/add_event',{
@@ -19,7 +19,6 @@ module.exports.postAddEvent = (req,res,next) => {
     let eenddt = req.body.end_date;
     let evenue = req.body.venue;
     let elink = etitle.toLowerCase().replace(/\W|_/g,' ').split(/\s+/).join('-');
-    console.log(req.body);
     Events.create({
         title: etitle,
         description: edesc,

@@ -18,22 +18,22 @@
 <script>
 
     function resizefn() {
-        if ($(window).width() < 830) {
-            $('#nitd-logo').attr('src', '/ieeesb/images/nitd-logo.png');
-            $('body').addClass('ui pushable');
-        }
         if ($(window).width() > 830) {
             $('#nitd-logo').attr('src', '/ieeesb/images/nitdelhi-logo.png');
             $('body').removeClass('ui pushable');
+        } else {
+            $('#nitd-logo').attr('src', '/ieeesb/images/nitd-logo.png');
+            $('body').addClass('ui pushable');
         }
         $('#main').css('visibility','');
     }
 
     $(document).ready(function () {
         resizefn();
-        $(window).resize(function () {
-            resizefn();
-        });
+    });
+    
+    $(window).on('resize',function () {
+        resizefn();
     });
 
     $('#active_tab').append($('.active.item').first().text());

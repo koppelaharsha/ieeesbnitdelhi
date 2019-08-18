@@ -1,6 +1,6 @@
 const session = require('express-session');
 const MySQLstore = require('express-mysql-session')(session);
-const { mysqlCredentials, sessionSecret } = require('../data/keys');
+const { mysqlCredentials, sessionSecret } = require('../web/data/keys');
 
 const sessionStore = new MySQLstore({
     host: mysqlCredentials.hostname,

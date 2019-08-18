@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const { mailCredentials } = require('../data/keys');
+const { mailCredentials } = require('../web/data/keys');
 
 let mailer = nodemailer.createTransport({
     host: 'smtp.gmail.com',

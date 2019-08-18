@@ -1,2 +1,4 @@
 node_modules
-data/access.log
+web/logs/*
+crypto/*
+.env

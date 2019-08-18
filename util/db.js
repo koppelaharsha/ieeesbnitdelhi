@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const {mysqlCredentials} = require('../data/keys');
+const {mysqlCredentials} = require('../web/data/keys');
 
 const sequelize = new Sequelize(
     mysqlCredentials.database,

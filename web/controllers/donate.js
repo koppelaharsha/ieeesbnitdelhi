@@ -1,7 +1,7 @@
 const Payments = require('../models/Payments');
-const paytm = require('../util/payments/checksum');
-const {hostname,paytmCredentials,mailCredentials} = require('../data/keys');
-const mailer = require('../util/mailer');
+const paytm = require('../../util/payments/checksum');
+const { mailCredentials, paytmCredentials } = require('../data/keys');
+const mailer = require('../../util/mailer');
 
 module.exports.getdonate = (req,res,next) => {
     return res.render('donate/get',{
@@ -26,7 +26,7 @@ module.exports.postdonate = (req,res,next) => {
 	params['ORDER_ID']			= orderID;
 	params['CUST_ID'] 			= req.body.name.toString().replace(/\s+/g, ' ').trim();
 	params['TXN_AMOUNT']		= Math.abs(parseInt(req.body.amount.replace(/\s+/g, ''))).toString();
-    params['CALLBACK_URL']      = hostname+'/ieeesb/donate/status?_csrf='+req.csrfToken();
+    params['CALLBACK_URL']      = process.env.HOST+'/ieeesb/donate/status?_csrf='+req.csrfToken();
     const key = paytmCredentials.key;
     paytm.genchecksum(params,key,(err,checksum) => {
         Payments.create({
@@ -47,19 +47,21 @@ module.exports.postdonate = (req,res,next) => {
                 },
                 from: ' "IEEESB NIT-Delhi" <'+mailCredentials.mailId+ '>',
                 to: results.custEmail,
-                subject: 'Donation for IEEESB NIT-Delhi',
-                html: '<div style="font-family:Roboto,sans-serif;font-size:14px">\
+                subject: 'Donation for IEEESB NIT-Delhi ( Order-ID : '+ results.orderId +' )',
+                html: '<div style="font-family:Roboto,sans-serif;font-size:14px;color:black;margin: 5px; padding: 7px; border:2px solid black;border-radius: 5px;background-color: aliceblue">\
+                <div><br></div>\
                 <div>Dear '+results.custId+',</div>\
                 <div><br></div>\
                 <div>Your payment of Rs.'+results.txnAmount+', towards IEEE Student Branch NIT-Delhi,\
                  with order ID '+results.orderId+' has been initiated.</div>\
-                <div>You can know the status of your payment by clicking <span>\
-                <a href="'+hostname+'/ieeesb/donate/status?order_id='+results.orderId+'">here</a>.</span></div>\
+                <div>You can know the status of your payment by clicking <a href="'+process.env.HOST+'/ieeesb/donate/status?order_id='+results.orderId+'" style="text-decoration:none;">here</a>.</div>\
                 <div><br></div>\
-                <div>Regards,</div>\
-                <div>Technical Head</div>\
-                <div>IEEESB NIT-Delhi</div>\
-                <div style="display:none">'+ Date.now() +'</div>\
+                <div>\
+                Regards,<br>\
+                Technical Head<br>\
+                IEEESB NITD\
+                </div>\
+                <div><br></div>\
                 </div>'
             },(error,info) => {
                 if(error){
@@ -100,19 +102,21 @@ module.exports.postdonatestatus = async (req,res,next) => {
             },
             from: ' "IEEESB NIT-Delhi" <'+mailCredentials.mailId+ '>',
             to: results.custEmail,
-            subject: 'Donation for IEEESB NIT-Delhi',
-            html: '<div style="font-family:Roboto,sans-serif;font-size:14px">\
+            subject: 'Donation for IEEESB NIT-Delhi ( Order-ID : '+ results.orderId +' )',
+            html: '<div style="font-family:Roboto,sans-serif;font-size:14px;color:black;margin: 5px; padding: 7px; border:2px solid black;border-radius: 5px;background-color: aliceblue">\
+            <div><br></div>\
             <div>Dear '+results.custId+',</div>\
             <div><br></div>\
             <div>Your payment of Rs.'+results.txnAmount+', towards IEEE Student Branch NIT-Delhi,\
              with order ID '+results.orderId+' is '+TXNstatus(results.txnStatus)+'.</div>\
-            <div>You can know the status of your payment by clicking <span>\
-            <a href="'+hostname+'/ieeesb/donate/status?order_id='+results.orderId+'">here</a>.</span></div>\
+            <div>You can know the status of your payment by clicking <a href="'+process.env.HOST+'/ieeesb/donate/status?order_id='+results.orderId+'" style="text-decoration:none;">here</a>.</div>\
             <div><br></div>\
-            <div>Regards,</div>\
-            <div>Technical Head</div>\
-            <div>IEEESB NIT-Delhi</div>\
-            <div style="display:none">'+ Date.now() +'</div>\
+            <div>\
+            Regards,<br>\
+            Technical Head<br>\
+            IEEESB NITD\
+            </div>\
+            <div><br></div>\
             </div>'
         },(error,info) => {
             if(error){

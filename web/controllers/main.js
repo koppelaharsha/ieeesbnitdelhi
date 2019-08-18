@@ -3,7 +3,7 @@ const Blogs = require('../models/Blogs');
 const Events = require('../models/Events');
 const Sequelize = require('sequelize');
 const sop = Sequelize.Op;
-const mailer = require('../util/mailer');
+const mailer = require('../../util/mailer');
 const fs = require('fs');
 const path = require('path');
 const {eventIdInc, mailCredentials} = require('../data/keys');
@@ -199,13 +199,5 @@ module.exports.postContactUs = (req,res,next) => {
         if(error){
             console.log(error);
         }
-    });
-}
-
-module.exports.error = (req,res,next) => {
-    return res.status(404).render('main/error',{
-        act: "none",
-        user: req.session.user,
-        msg: 'Page Not Found'
     });
 }
