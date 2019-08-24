@@ -2,6 +2,7 @@ const Payments = require('../models/Payments');
 const paytm = require('../../util/payments/checksum');
 const { mailCredentials, paytmCredentials } = require('../data/keys');
 const mailer = require('../../util/mailer');
+const {validationResult} = require('express-validator');
 
 module.exports.getdonate = (req,res,next) => {
     return res.render('donate/get',{
@@ -13,9 +14,13 @@ module.exports.getdonate = (req,res,next) => {
 }
 
 module.exports.postdonate = (req,res,next) => {
-    const datetime = new Date();
-    const date = datetime.toISOString().split('T')[0].split('-').join('');
-    const time = datetime.toISOString().split(/T|\./)[1].split(':').join('');
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.redirect('/ieeesb/donate');
+    }
+    const datetime = new Date().toISOString();
+    const date = datetime.split('T')[0].split('-').join('');
+    const time = datetime.split(/T|\./)[1].split(':').join('');
     const rand = Math.floor(Math.random()*100000000000).toString();
     const orderID = date+time+rand;
     var params 	= [];

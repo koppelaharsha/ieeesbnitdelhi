@@ -1,41 +1,40 @@
-	<%- include('../includes/header.ejs') %>
+<%- include('../includes/header.ejs') %>
 
-	<div class="ui centered stackable grid">
-		<div class="sixteen wide mobile eight wide tablet eight wide computer column">
-			<div class="ui form segment">
-				<h3 class="center aligned header">Donate</h3>
-				<% if(msg){ %>
-				<div class="ui error message segment">
-					<%= msg %>
-				</div>
-				<% } %>
-		<form action="/ieeesb/donate" method="post">
-			<div class="field">
+<div class="ui centered stackable grid">
+	<div class="sixteen wide mobile eight wide tablet eight wide computer column">
+		<div class="ui form segment">
+			<h3 class="center aligned header">Donate</h3>
+			<% if(msg){ %>
+			<div class="ui error message segment">
+				<%= msg %>
+			</div>
+			<% } %>
+			<form action="/ieeesb/donate" method="post">
+				<div class="field">
 					<label for="name">Name:</label>
 					<div class="ui input">
 						<input type="text" name="name" required>
 					</div>
 				</div>
-					<div class="field">
-							<label for="email">Email:</label>
-							<div class="ui input">
-								<input type="email" name="email" required>
-							</div>
-						</div>
-						<div class="field">
-								<label for="amount">Amount:</label>
-								<div class="ui input">
-									<input type="number" name="amount" required>
-								</div>
-							</div>
-							<div class="field">
-									<button class="ui blue submit fluid button" type="submit">DONATE</button>
-								</div>
-								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						</form>
-			</div>
-			</div>
-			</div>
-			
-
-	<%- include('../includes/footer.ejs') %>
+				<div class="field">
+					<label for="email">Email:</label>
+					<div class="ui input">
+						<input type="email" name="email" required>
+					</div>
+				</div>
+				<div class="field">
+					<label for="amount">Amount:</label>
+					<div class="ui input">
+						<input type="number" name="amount" required>
+					</div>
+				</div>
+				<div class="field">
+					<button class="ui blue submit fluid button" type="submit">DONATE</button>
+				</div>
+				<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+			</form>
+		</div>
+	</div>
+</div>
+		
+<%- include('../includes/footer.ejs') %>

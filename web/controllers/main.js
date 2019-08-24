@@ -7,6 +7,7 @@ const mailer = require('../../util/mailer');
 const fs = require('fs');
 const path = require('path');
 const {eventIdInc, mailCredentials} = require('../data/keys');
+const {validationResult} = require('express-validator');
 
 module.exports.profile = (req,res,next) => {
     Users.findOne({
@@ -99,7 +100,6 @@ module.exports.event = (req,res,next) => {
         return next();
     }
     let elink = req.params.elink || '';
-    // console.log(elink);
     Events.findOne({ 
         where: { id:eid } 
     }).then(results => {
@@ -179,8 +179,12 @@ module.exports.getContactUs = (req,res,next) => {
 }
 
 module.exports.postContactUs = (req,res,next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.redirect('/ieeesb/contact_us');
+    }
     let name = req.body.name.toString().replace(/\s+/g, ' ').trim();
-    let email = req.body.email.toString().replace(/\s+/g, '').trim();
+    let email = req.body.email.toString().trim();
     let feedback = req.body.feedback.toString().trim();
     req.flash('msg','Thank you for contacting us!');
     res.redirect('/ieeesb/contact_us');

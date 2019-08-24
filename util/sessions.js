@@ -19,6 +19,6 @@ module.exports = session({
     cookie: {
         path: '/',
         httpOnly: true,
-        maxAge: new Date(Date.now() + 86400000)
+        maxAge: Date.now() + 86400000
     }
 });

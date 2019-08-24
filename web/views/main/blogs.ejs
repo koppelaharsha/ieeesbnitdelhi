@@ -1,7 +1,6 @@
 <%- include('../includes/header.ejs') %>
 
 <div class="ui basic segment">
-	<!-- <h2> Blogs </h2> -->
 	<% if(blogs.length == 0){ %>
 	<div class="ui center aligned basic segment"> No Blogs Found </div>
     <% }else{ %>
@@ -15,11 +14,6 @@
 							<div class="header"><%= b.user.name %></div>
 							<div class="meta">
 								<%=  b.updatedAt.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
-								<!-- <%  if(b.createdAt.toString() !== b.updatedAt.toString()){ %>
-									Last edit: <%=  b.updatedAt.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
-								<% }else{ %>
-									<%=  b.createdAt.toLocaleString('en-US',{month:"long",day:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}) %>
-								<% } %> -->
 							</div>
 						</div>
 						</div>

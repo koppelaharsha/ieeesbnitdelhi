@@ -4,6 +4,7 @@ const Users = require('../models/Users');
 const bcrypt = require('bcryptjs');
 const mailer = require('../../util/mailer');
 const { mailCredentials } = require('../data/keys');
+const { validationResult } = require('express-validator');
 
 module.exports.getSignup = (req, res, next) => {
     return next();
@@ -21,6 +22,10 @@ module.exports.getSignup = (req, res, next) => {
 }
 
 module.exports.postSignup = (req, res, next) => {
+    // const errors = validationResult(req);
+    // if(!errors.isEmpty()){
+    //     return res.status(401).json(errors);
+    // }
     return next();
     const username = req.body.username;
     const name = req.body.name;

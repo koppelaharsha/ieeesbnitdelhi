@@ -26,11 +26,17 @@ app.use(flash());
 app.set('view engine','ejs');
 app.set('views','web/views');
 
+// app.use('/crypto', require('./crypto/routes/router'));
+
 app.use('/',
     require('./web/util/logger'),
     favicon('web/public/images/favicon.ico'),
     require('./web/routes/router')
 );
+
+app.use(
+    require('./web/controllers/error').errorHandler
+)
 
 // const User=require('./models/Users');
 // const Blog=require('./models/Blogs');
