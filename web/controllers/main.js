@@ -1,5 +1,5 @@
 const Users = require('../models/Users');
-const Blogs = require('../models/Blogs');
+// const Blogs = require('../models/Blogs');
 const Events = require('../models/Events');
 const Sequelize = require('sequelize');
 const sop = Sequelize.Op;
@@ -68,7 +68,7 @@ module.exports.events = (req,res,next) => {
 
 module.exports.pastevents = (req,res,next) => {
     let page = parseInt(req.params.page) || 0;
-    if(page === NaN || !page || page <= 0){ 
+    if(page === NaN || !page || page <= 0 || page > 1000){ 
         return next(); 
     }
     let pe = [];
@@ -96,7 +96,7 @@ module.exports.pastevents = (req,res,next) => {
 
 module.exports.event = (req,res,next) => {
     let eid = parseInt(req.params.eid)-eventIdInc || 0;
-    if(eid <= 0){
+    if(eid <= 0 || eid > 10000){
         return next();
     }
     let elink = req.params.elink || '';
