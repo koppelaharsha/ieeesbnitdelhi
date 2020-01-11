@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(hpp());  //HTTP Parameter Pollution
 // app.use(cookieParser());
 
-app.use('/crypto', require('./crypto/index'));
+// app.use('/crypto', require('./crypto/index'));
 app.use('/', require('./web/index'));
 
 // const User=require('./models/Users');
