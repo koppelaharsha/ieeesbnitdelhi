@@ -6,9 +6,12 @@ const sequelize = new Sequelize(
     mysqlCredentials.username,
     mysqlCredentials.password,
     {
-        dialect: 'mysql',
         host: mysqlCredentials.hostname,
         port: 3306,
+        dialect: 'mysql',
+        dialectOptions:{
+            ssl: 'Amazon RDS'
+        },
         timezone: '+05:30'
     }
 );
