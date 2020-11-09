@@ -6,7 +6,7 @@ const sop = Sequelize.Op;
 const mailer = require('../../util/mailer');
 const fs = require('fs');
 const path = require('path');
-const {eventIdInc, mailCredentials} = require('../data/keys');
+const {eventIdInc, mailCredentials} = require('../../util/keys');
 const {validationResult} = require('express-validator');
 
 module.exports.profile = (req,res,next) => {

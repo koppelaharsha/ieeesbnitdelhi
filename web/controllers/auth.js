@@ -3,7 +3,7 @@ const sop = Sequelize.Op;
 const Users = require('../models/Users');
 const bcrypt = require('bcryptjs');
 const mailer = require('../../util/mailer');
-const { mailCredentials } = require('../data/keys');
+const { mailCredentials } = require('../../util/keys');
 const { validationResult } = require('express-validator');
 
 module.exports.getSignup = (req, res, next) => {

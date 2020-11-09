@@ -1,6 +1,6 @@
 const Payments = require('../models/Payments');
 const paytm = require('../../util/payments/checksum');
-const { mailCredentials, paytmCredentials } = require('../data/keys');
+const { mailCredentials, paytmCredentials } = require('../../util/keys');
 const mailer = require('../../util/mailer');
 const {validationResult} = require('express-validator');
 
@@ -31,7 +31,7 @@ module.exports.postdonate = (req,res,next) => {
 	params['ORDER_ID']			= orderID;
 	params['CUST_ID'] 			= req.body.name.toString().replace(/\s+/g, ' ').trim();
 	params['TXN_AMOUNT']		= Math.abs(parseInt(req.body.amount.replace(/\s+/g, ''))).toString();
-    params['CALLBACK_URL']      = process.env.HOST+'/ieeesb/donate/status?_csrf='+req.csrfToken();
+    params['CALLBACK_URL']      = process.env.PROTOCOL+process.env.HOST+'/ieeesb/donate/status?_csrf='+req.csrfToken();
     const key = paytmCredentials.key;
     paytm.genchecksum(params,key,(err,checksum) => {
         Payments.create({
@@ -92,7 +92,7 @@ module.exports.postdonatestatus = async (req,res,next) => {
     payment.txnStatus = req.body.STATUS || '';
     payment.respCode = req.body.RESPCODE || '';
     payment.respMsg = req.body.RESPMSG || '';
-    payment.txnDate = req.body.TXNDATE || '';
+    payment.txnDate = req.body.TXNDATE || null;
     payment.checksumRecv = req.body.CHECKSUMHASH || '';
     payment.gatewayName = req.body.GATEWAYNAME || '';
     payment.bankName = req.body.BANKNAME || '';

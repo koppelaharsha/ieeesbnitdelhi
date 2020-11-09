@@ -1,5 +1,6 @@
 .env
 node_modules
+util/keys.js
 web/logs/*
 web/public/test/*
 crypto/*

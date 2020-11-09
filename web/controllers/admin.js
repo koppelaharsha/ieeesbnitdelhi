@@ -1,7 +1,7 @@
 const Events = require('../models/Events');
 const fs = require('fs');
 const path = require('path');
-const { eventIdInc } = require('../data/keys');
+const { eventIdInc } = require('../../util/keys');
 
 module.exports.getAddEvent = (req,res,next) => {
     return res.render('admin/add_event',{

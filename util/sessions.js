@@ -1,7 +1,7 @@
 const session = require('express-session');
 const sequelize = require('./db');
 const sequelizeStore = require('connect-session-sequelize')(session.Store);
-const {sessionSecret} = require('../web/data/keys');
+const {sessionSecret} = require('./keys');
 
 module.exports = session({
     secret: sessionSecret,
